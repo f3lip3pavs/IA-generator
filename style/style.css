@@ -284,3 +284,10 @@ ul{
     padding-right: 5%;
     padding-top: 3%;
 }
+
+#success{
+    z-index: 1;
+    width: 100%;
+    display: none;
+    
+}
