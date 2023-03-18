@@ -8,10 +8,10 @@ let lefID = 0;
 let rightID = 0;
 
 let card = [
-    {titulo: 'Pastel de carne', price: '8.00', image: '../assets/pastel_de_carne.jpg', section: 'salgados'},
-    {titulo: 'Pastel de chocolate', price: '11.99', image: '../assets/pastel_de_chocolate.jpg', section: 'doces'},
-    {titulo: 'Coca-cola', price: '3.99', image: '../assets/coca.png', section: 'bebidas'},
-    {titulo: 'pastel de queijo', price: '8.00', image: '../assets/pastel_de_carne.jpg', section: 'salgados'}
+    {titulo: 'Pastel de carne', price: '8.00', image: './assets/pastel_de_carne.jpg', section: 'salgados'},
+    {titulo: 'Pastel de chocolate', price: '11.99', image: './assets/pastel_de_chocolate.jpg', section: 'doces'},
+    {titulo: 'Coca-cola', price: '3.99', image: './assets/coca.png', section: 'bebidas'},
+    {titulo: 'pastel de queijo', price: '8.00', image: './assets/pastel_de_carne.jpg', section: 'salgados'}
 ];
 
 function createCard(index){ 
