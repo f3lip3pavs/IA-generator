@@ -9,45 +9,114 @@ let rightID = 0;
 
 let card = [
     {titulo: 'Pastel de carne', price: '8.00', image: './assets/pastel_de_carne.jpg', section: 'salgados'},
+    {titulo: 'Pastel de carne', price: '8.00', image: './assets/pastel_de_carne.jpg', section: 'salgados'},
+    {titulo: 'Pastel de carne', price: '8.00', image: './assets/pastel_de_carne.jpg', section: 'salgados'},
     {titulo: 'Pastel de chocolate', price: '11.99', image: './assets/pastel_de_chocolate.jpg', section: 'doces'},
+    {titulo: 'Pastel de chocolate', price: '11.99', image: './assets/pastel_de_chocolate.jpg', section: 'doces'},
+    {titulo: 'Pastel de chocolate', price: '11.99', image: './assets/pastel_de_chocolate.jpg', section: 'doces'},
+    {titulo: 'Pastel de chocolate', price: '11.99', image: './assets/pastel_de_chocolate.jpg', section: 'doces'},
+    {titulo: 'Coca-cola', price: '3.99', image: './assets/coca.png', section: 'bebidas'},
+    {titulo: 'Coca-cola', price: '3.99', image: './assets/coca.png', section: 'bebidas'},
+    {titulo: 'Coca-cola', price: '3.99', image: './assets/coca.png', section: 'bebidas'},
     {titulo: 'Coca-cola', price: '3.99', image: './assets/coca.png', section: 'bebidas'},
     {titulo: 'pastel de queijo', price: '8.00', image: './assets/pastel_de_carne.jpg', section: 'salgados'}
 ];
 
 function createCard(index){ 
 
-    return cardElementBody = `<div class="card text-bg-dark text-end">
-    <img src=${card[index].image} class="card-img" alt="...">
-    <div class="card-img-overlay p-0">
-        <div class="price-container blur">
-            <h5 class="content-container-price">R$ ${card[index].price}</h5>
-            <h5 class="content-container-title">${card[index].titulo}</h5>
-        </div>
-    </div>
-    <div class="container-button py-2">
-    <div class="row">
-        <div id = "l${lefID++}" onclick="decreaseCounter(this)" class="col text-center button-left opacity-75">-</div>
-        <div class="col-3 text-center pt-2 counter">0</div>
-        <div id ="r${rightID++}" onclick="addCounter(this)" class="col text-center button-right opacity-75">+</div>
-    </div>
-    </div>
-    </div>`
+    if(screen.availWidth < 900){
+    return cardElementBody = `
+        <div class="card text-bg-dark text-end">
+            <img src=${card[index].image} class="card-img" alt="...">
+            <div class="card-img-overlay p-0">
+                <div class="price-container blur">
+                    <h5 class="content-container-price">R$ ${card[index].price}</h5>
+                    <h5 class="content-container-title">${card[index].titulo}</h5>
+                </div>
+            </div>
+            <div class="container-button py-2">
+                <div class="row">
+                    <div id = "l${lefID++}" onclick="decreaseCounter(this)" class="col text-center button-left opacity-75">-</div>
+                    <div class="col-3 text-center pt-2 counter">0</div>
+                    <div id ="r${rightID++}" onclick="addCounter(this)" class="col text-center button-right opacity-75">+</div>
+                </div>
+            </div>
+        </div>`
+    }else{
+
+        return cardElementBody = `
+                
+                    <div class="col card text-bg-dark text-end">
+                        <img src=${card[index].image} class="card-img" alt="...">
+                        <div class="card-img-overlay p-0">
+                            <div class="price-container blur">
+                                <h5 class="content-container-price">R$ ${card[index].price}</h5>
+                                <h5 class="content-container-title">${card[index].titulo}</h5>
+                            </div>
+                        </div>
+                        <div class="container-button py-2">
+                            <div class="row">
+                                <div id = "l${lefID++}" onclick="decreaseCounter(this)" class="col text-center button-left opacity-75">-</div>
+                                <div class="col-3 text-center pt-2 counter">0</div>
+                                <div id ="r${rightID++}" onclick="addCounter(this)" class="col text-center button-right opacity-75">+</div>
+                            </div>
+                        </div>
+                    </div>
+               `
+
+    }
 
 };
 
 window.addEventListener("DOMContentLoaded", () => {
+
+    if(screen.availWidth > 900){
+        sweetList.innerHTML = `
+        <div class="container text-center">
+            <div id="docesCardDesk" class="row">
+            </div>
+        </div>`
+        saltyList.innerHTML = `
+        <div class="container text-center">
+            <div id="salgadosCardDesk" class="row">
+            </div>
+        </div>`
+        drinkList.innerHTML = `
+        <div class="container text-center">
+            <div id="babidasCardDesk" class="row">
+            </div>
+        </div>`
+    }
+
+    let docesCardDesk = document.getElementById('docesCardDesk')
+    let salgadosCardDesk = document.getElementById('salgadosCardDesk')
+    let babidasCardDesk = document.getElementById('babidasCardDesk')
+
     for(i=0; i < card.length; i++){
         if(card[i].section == 'salgados'){
 
-            saltyList.innerHTML += createCard(i)
+            if(screen.availWidth > 900){
+                salgadosCardDesk.innerHTML += createCard(i)
+            }else{
+                saltyList.innerHTML += createCard(i)
+            }
 
         }else if(card[i].section == 'doces'){
-
-            sweetList.innerHTML += createCard(i)
+            
+            if(screen.availWidth > 900){
+                docesCardDesk.innerHTML += createCard(i)
+            }else{
+                sweetList.innerHTML += createCard(i)
+            }
 
         }else if(card[i].section == 'bebidas'){
 
-            drinkList.innerHTML += createCard(i)
+            if(screen.availWidth > 900){
+                babidasCardDesk.innerHTML += createCard(i)
+            }else{
+                drinkList.innerHTML += createCard(i)
+            }
+  
         }
     }
 });
@@ -241,3 +310,20 @@ sendButton.addEventListener('click', () => {
 
     
 })
+
+{/* <div class="card-group">
+        <div class="card">
+            <img src="${card[index].image}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${card[index].titulo}</h5>
+                <p class="card-text">${card[index].price}</p>
+                <div class="container-button py-2">
+                    <div class="row">
+                        <div id = "l${lefID++}" onclick="decreaseCounter(this)" class="col text-center button-left opacity-75">-</div>
+                        <div class="col-3 text-center pt-2 counter">0</div>
+                        <div id ="r${rightID++}" onclick="addCounter(this)" class="col text-center button-right opacity-75">+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> */}
