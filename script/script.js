@@ -72,17 +72,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if(screen.availWidth > 900){
         sweetList.innerHTML = `
-        <div class="container text-center">
+        <div class="text-center">
             <div id="docesCardDesk" class="row">
             </div>
         </div>`
         saltyList.innerHTML = `
-        <div class="container text-center">
+        <div class="text-center">
             <div id="salgadosCardDesk" class="row">
             </div>
         </div>`
         drinkList.innerHTML = `
-        <div class="container text-center">
+        <div class="text-center">
             <div id="babidasCardDesk" class="row">
             </div>
         </div>`
